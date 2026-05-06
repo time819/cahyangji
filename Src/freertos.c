@@ -1511,9 +1511,12 @@ void StartTask17(void *argument)
 								else if(AD_CH_value[5] < (user_moter1.target_value + 300))//中速
 									user_moter_backward(0x01,300);
 								else
-									user_moter_backward(0x01,500);	
-
-								osDelay(10);	
+								user_moter_backward(0x01,500);	
+                {
+                  osDelay(5000);
+                  break;
+                }
+								// osDelay(10);	
 							}						
 					 }
 					 else if(AD_CH_value[5] < user_moter_pra.yangban_xuanzhe - 40) //当前值大于复位值，伸长
@@ -1527,7 +1530,11 @@ void StartTask17(void *argument)
 								else
 									user_moter_forward(0x01,500);
 								
-								osDelay(10);	
+                {
+                  osDelay(5000);
+                  break;
+                }
+								// osDelay(10);		
 							}						
 					 }
 					 else //已经是复位状态

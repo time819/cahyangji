@@ -93,7 +93,7 @@ user_pro_func_t user_can1_pro_func[FUNC_CAN1_MAX_NUM] ={
 {0x9004, rice_lack4},//新增秧框
 
 {0x9090, YangBang_fuwei},  
-  
+ 
 };
 
 /*************************************************
@@ -196,7 +196,8 @@ uint8 user_bk_cfg(j1939_msg_t * RxMessage)
 				{
 				  user_basic_infor.pn_can[6]=RxMessage->Array[6];					
 				  user_basic_infor.pn_can[7]=RxMessage->Array[7]|0xf0;//高4为不存数据
-					
+				
+				  
 					{
 							sprintf(user_basic_infor.pn,"%s%1x%02x%02x%02x%02x%02x%02x%2x","PNINFO,",
 							user_basic_infor.pn_can[7]&0x0f,user_basic_infor.pn_can[6],user_basic_infor.pn_can[5],
@@ -284,7 +285,7 @@ uint8 user_heart_beat(j1939_msg_t * RxMessage)
 {
 	 uint8 pra_num  ;
 //  static uint8 pra_num_rec =0;
-	static uint8 pra_num_rec ;
+	static uint8 pra_num_rec;  
 	pra_num = RxMessage->Array[4];
 	if((pra_num <= 251)
 		&&((pra_num_rec+1)%250== pra_num%250 )
