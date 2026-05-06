@@ -188,7 +188,7 @@ uint8 user_bk_cfg(j1939_msg_t * RxMessage)
 				  user_basic_infor.pn_can[0]=RxMessage->Array[6];//PNÂëµÄ×îµÍÎ»
 				  user_basic_infor.pn_can[1]=RxMessage->Array[7];
 				  user_basic_infor.pn_can[2]=RxMessage->Array[8];	
-				  user_basic_infor.pn_can[3]=RxMessage->Array[9];
+				  user_basic_infor.pn_can[3]=RxMessage->Array[9] ;
 				  user_basic_infor.pn_can[4]=RxMessage->Array[10];	
 				  user_basic_infor.pn_can[5]=RxMessage->Array[11];
 				}
