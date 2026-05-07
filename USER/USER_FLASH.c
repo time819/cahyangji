@@ -18,8 +18,11 @@
 	uint32 writeFlashData = 0x11223366;
 	uint32 addr = 0x080C0000;//地址要和sector相对应
 	
-	char * user_ver_std  ="APPINFO,V1.01.21.31";//统一版本号
-  char * user_ver    =  "shangmaio_tb012024061202\r\n";//自定义版本号
+//	char * user_ver_std  ="APPINFO,V1.01.21.31";//统一版本号
+//  char * user_ver    =  "shangmaio_tb012024061202\r\n";//自定义版本号
+
+   char * user_ver_std  ="APPINFO,V3.05.07.01";//统一版本号
+  char * user_ver    =  "shangmaio291_v01_2026050701\r\n";//自定义版本号
 	sn_pn_t user_sn_pn ;
 	basic_infor_t user_basic_infor;
 	

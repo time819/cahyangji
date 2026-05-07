@@ -623,10 +623,16 @@ void User_Pra_Set(char *buff)
 void show_infor(void)
 {
 		char Ptr[30]={0};
-		user_send_str(&huart7, "***************** 上苗二代车主控V1.8_0117 *******************\r\n");	
+//		user_send_str(&huart7, "***************** 上苗二代车主控V1.8_0117 *******************\r\n");	
+		user_send_str(&huart7, "***************** 上苗二代车主控*******************\r\n");	
 		user_send_str(&huart7, "启动固件版本:\r\n");	
 		user_send_str(&huart7, user_basic_infor.boot_ver);
+    user_send_str(&huart7, "\r\n");	
+
+		user_send_str(&huart7, "APP固件版本:\r\n");	
+		user_send_str(&huart7, user_ver);
     user_send_str(&huart7, "\r\n");			
+		
 		user_send_str(&huart7, "PN、SN号:\r\n");
 		user_send_str(&huart7, user_basic_infor.pn); 
 		user_send_str(&huart7, "\r\n");		

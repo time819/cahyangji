@@ -92,7 +92,7 @@ user_pro_func_t user_can1_pro_func[FUNC_CAN1_MAX_NUM] ={
 {0x9003, rice_lack3},
 {0x9004, rice_lack4},//新增秧框
 
-{0x9090, YangBang_fuwei},  
+{0x9090, YangBang_fuwei}, // hh 猜测是没有使用到
  
 };
 
@@ -788,7 +788,7 @@ uint8 high_user_get(j1939_msg_t * RxMessage)
     osSemaphoreRelease( myCountingSemMoter4Handle);
     osSemaphoreRelease( myCountingSemMoter5Handle);    
    } 
-   else if((high_sta == 3) && (high_data < 0x25)) //箱子放下去 
+   else if((high_sta == 3) && (high_data < 0x25)) //箱子放下去 // hh 高度小于10%，秧箱才可以落
    {
     user_state.YangXiang_high = 2;
     osSemaphoreRelease( myCountingSemMoter2Handle);

@@ -640,9 +640,10 @@ void StartTask06(void *argument)
    int speed_temp2=0;
   for(;;)
   {
-    if(speed_text1 == 1)//hh  本任务仅用于测试设置的基准速度，有无明显不合理
+    if(speed_text1 == 1)//hh  本任务仅用于测试设置的基准速度，有无明显不合理;
     {
-      user_moter_pra.speed_base=(user_moter_pra.speed_init * YangTai_speed + 8032)*4; //基准速度，秧台速度，改task仅用于串口测试
+			//user_moter_pra.speed_init    hh  可以认为是一个比例系数，目前是-150*（17或者18），浮点数会更好？
+      user_moter_pra.speed_base=(user_moter_pra.speed_init * YangTai_speed + 8032)*4; //基准速度，秧台速度，改task仅用于串口测试,
 			
 			if(user_moter_pra.speed_base < 100)
 				user_moter_pra.speed_base = 100;
@@ -955,7 +956,7 @@ void StartTask09(void *argument)
 		val = osSemaphoreAcquire(myCountingSemMoter2Handle, 0xffffffff); 
 		if (val== osOK)
 		{
-			if(user_state.stop_sta == 0)
+			if(user_state.stop_sta == 0)// hh 未按下急停按钮
 			{
 					uint8 i = 0;
 					if((user_state.YangXiang_high == 1)||(user_state.less_yangxiang == 1)) //秧箱升起
@@ -1504,6 +1505,8 @@ void StartTask17(void *argument)
 					 }
 					 else if(AD_CH_value[5] > user_moter_pra.yangban_xuanzhe + 40)  //当前值大于复位值，缩短
 					 {
+						  uint16 num=0; //hh 后来添加
+						 
 							while(AD_CH_value[5] > user_moter_pra.yangban_xuanzhe)
 							{
 								if(AD_CH_value[5] < (user_moter_pra.yangban_xuanzhe + 180))//大于100以内，低速
@@ -1512,15 +1515,21 @@ void StartTask17(void *argument)
 									user_moter_backward(0x01,300);
 								else
 								user_moter_backward(0x01,500);	
-                {
-                  osDelay(5000);
-                  break;
+                
+								{ //hh 后来添加
+									num++;
+                  osDelay(10);
+									if(num>50)
+									{
+                     break;									
+									}
                 }
 								// osDelay(10);	
 							}						
 					 }
 					 else if(AD_CH_value[5] < user_moter_pra.yangban_xuanzhe - 40) //当前值大于复位值，伸长
 					 {
+						  uint16 num=0; //hh 后来添加						 
 							while(AD_CH_value[5] < user_moter_pra.yangban_xuanzhe)
 							{
 								if(AD_CH_value[5] > (user_moter_pra.yangban_xuanzhe - 180))
@@ -1530,9 +1539,13 @@ void StartTask17(void *argument)
 								else
 									user_moter_forward(0x01,500);
 								
-                {
-                  osDelay(5000);
-                  break;
+								{ //hh 后来添加
+									num++;
+                  osDelay(10);
+									if(num>50)
+									{
+                     break;									
+									}
                 }
 								// osDelay(10);		
 							}						
