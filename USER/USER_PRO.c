@@ -593,7 +593,7 @@ void user_data_check(void)
 
    if((user_moter_pra.moter_sensor[6][1]==0xffff)||(user_moter_pra.moter_sensor[6][1]==0x0000))
 	 {
-		 user_moter_pra.moter_sensor[6][1] = SENSOR1_THD; //行走手柄
+		 user_moter_pra.moter_sensor[6][1] = SENSOR1_THD ; //行走手柄
 	 }
 		 
   	if((user_moter_pra.moter_sensor[8][1]==0xffff)||(user_moter_pra.moter_sensor[8][1]==0x0000))
